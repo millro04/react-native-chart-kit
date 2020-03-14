@@ -106,12 +106,14 @@ class BarChart extends AbstractChart {
       withInnerLines = true,
       showBarTops = true,
       showBarText = true,
-      segments = 4
+      segments = 4,
+      decimalPlaces,
     } = this.props;
     const { borderRadius = 0, paddingTop = 16, paddingRight = 64 } = style;
     const config = {
       width,
       height,
+      decimalPlaces,
       verticalLabelRotation,
       horizontalLabelRotation,
       barRadius: (this.props.chartConfig && this.props.chartConfig.barRadius) || 0,
