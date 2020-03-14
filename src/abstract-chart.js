@@ -109,10 +109,14 @@ class AbstractChart extends Component {
     const {
       yAxisLabel = "",
       yAxisSuffix = "",
-      yLabelsOffset = 12
+      yLabelsOffset = 12,
+      hidePointsAtIndex = []
     } = this.props;
 
     return [...Array(count === 1 ? 1 : count + 1).keys()].map((i, _) => {
+      if (hidePointsAtIndex.includes(i)) {
+        return null;
+      }
       let yLabel = i * count;
 
       if (count === 1) {
