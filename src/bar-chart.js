@@ -85,6 +85,7 @@ class BarChart extends AbstractChart {
             y={((baseHeight - barHeight) / 4) * 3 + paddingTop - 5}
             fill="white"
             fontSize="12"
+            key={Math.random()}
             textAnchor="right">
             {x}
           </Text>
