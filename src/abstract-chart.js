@@ -172,10 +172,10 @@ class AbstractChart extends Component {
     if (stackedBar) {
       fac = 0.71;
     }
+    hidePointsAtIndex.map(i => {
+      labels.splice(i, 1);
+    });
     return labels.map((label, i) => {
-      if (hidePointsAtIndex.includes(i)) {
-        return null;
-      }
       const x =
         (((width - paddingRight) / labels.length) * i +
           paddingRight +
