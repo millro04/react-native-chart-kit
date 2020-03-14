@@ -105,6 +105,7 @@ class BarChart extends AbstractChart {
       horizontalLabelRotation = 0,
       withInnerLines = true,
       showBarTops = true,
+      showBarText = true,
       segments = 4
     } = this.props;
     const { borderRadius = 0, paddingTop = 16, paddingRight = 64 } = style;
