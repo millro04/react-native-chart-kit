@@ -65,6 +65,34 @@ class BarChart extends AbstractChart {
     });
   };
 
+  renderBarText = config => {
+    const { data, width, height, paddingTop, paddingRight } = config;
+    const labelData = data.slice();
+    if (this.props.yMax) {
+      labelData.push(this.props.yMax);
+    }
+    const baseHeight = this.calcBaseHeight(data, height);
+    return data.map((x, i) => {
+      const barHeight = this.calcHeight(x, labelData, height);
+      const barWidth = 32 * this.getBarPercentage();
+      return (
+        <Text
+            x={
+              paddingRight +
+              (i * (width - paddingRight)) / data.length +
+              barWidth / 2
+            }
+            y={((baseHeight - barHeight) / 4) * 3 + paddingTop}
+            fill="white"
+            fontSize="16"
+            fontWeight="bold"
+            textAnchor="middle">
+            TESTING
+          </Text>
+      );
+    });
+  };
+
   render() {
     const {
       width,
@@ -144,6 +172,14 @@ class BarChart extends AbstractChart {
           </G>
           <G>
             {showBarTops && this.renderBarTops({
+              ...config,
+              data: data.datasets[0].data,
+              paddingTop,
+              paddingRight
+            })}
+          </G>
+          <G>
+            {showBarText && this.renderBarText({
               ...config,
               data: data.datasets[0].data,
               paddingTop,

@@ -187,6 +187,7 @@ class AbstractChart extends Component {
           paddingRight +
           horizontalOffset) *
         fac;
+
       const y = (height * 3) / 4 + paddingTop + fontSize * 2 + xLabelsOffset;
       return (
         <Text
