@@ -127,8 +127,8 @@ class AbstractChart extends Component {
         )}${yAxisSuffix}`;
       } else {
         const label = this.props.fromZero
-          ? (this.calcScaler(data) / count) * i + Math.min(...labelData, 0)
-          : (this.calcScaler(data) / count) * i + Math.min(...labelData);
+          ? (this.calcScaler(labelData) / count) * i + Math.min(...labelData, 0)
+          : (this.calcScaler(labelData) / count) * i + Math.min(...labelData);
         yLabel = `${yAxisLabel}${formatYLabel(
           label.toFixed(decimalPlaces)
         )}${yAxisSuffix}`;
