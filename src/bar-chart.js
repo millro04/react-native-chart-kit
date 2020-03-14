@@ -82,7 +82,7 @@ class BarChart extends AbstractChart {
               (i * (width - paddingRight)) / data.length +
               barWidth / 2
             }
-            y={((baseHeight - barHeight) / 4) * 3 + paddingTop + 10}
+            y={((baseHeight - barHeight) / 4) * 3 + paddingTop - 5}
             fill="white"
             fontSize="12"
             textAnchor="right">
