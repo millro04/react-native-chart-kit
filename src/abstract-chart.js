@@ -109,8 +109,13 @@ class AbstractChart extends Component {
     const {
       yAxisLabel = "",
       yAxisSuffix = "",
-      yLabelsOffset = 12
+      yLabelsOffset = 12,
+      yMax,
     } = this.props;
+
+    if (yMax) {
+      data.push(yMax);
+    }
 
     return [...Array(count === 1 ? 1 : count + 1).keys()].map((i, _) => {
       let yLabel = i * count;
@@ -172,10 +177,10 @@ class AbstractChart extends Component {
     if (stackedBar) {
       fac = 0.71;
     }
-    hidePointsAtIndex.map(i => {
-      labels.splice(i, 1);
-    });
     return labels.map((label, i) => {
+      if (hidePointsAtIndex.includes(i)) {
+        return null;
+      }
       const x =
         (((width - paddingRight) / labels.length) * i +
           paddingRight +

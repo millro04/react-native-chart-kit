@@ -13,10 +13,6 @@ class BarChart extends AbstractChart {
 
   renderBars = config => {
     const { data, width, height, paddingTop, paddingRight, barRadius } = config;
-    const { hidePointsAtIndex } = this.props;
-    hidePointsAtIndex.map(i => {
-      data.splice(i, 1);
-    });
     const baseHeight = this.calcBaseHeight(data, height);
     return data.map((x, i) => {
       const barHeight = this.calcHeight(x, data, height);
