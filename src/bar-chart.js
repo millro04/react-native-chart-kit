@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { Svg, Rect, G } from "react-native-svg";
+import { View } from "react-native";
+import { Svg, Rect, G, Text } from "react-native-svg";
 import AbstractChart from "./abstract-chart";
 
 const barWidth = 32;
