@@ -113,8 +113,9 @@ class AbstractChart extends Component {
       yMax,
     } = this.props;
 
+    const labelData = data.slice();
     if (yMax) {
-      data.push(yMax);
+      labelData.push(yMax);
     }
 
     return [...Array(count === 1 ? 1 : count + 1).keys()].map((i, _) => {
@@ -122,12 +123,12 @@ class AbstractChart extends Component {
 
       if (count === 1) {
         yLabel = `${yAxisLabel}${formatYLabel(
-          data[0].toFixed(decimalPlaces)
+          labelData[0].toFixed(decimalPlaces)
         )}${yAxisSuffix}`;
       } else {
         const label = this.props.fromZero
-          ? (this.calcScaler(data) / count) * i + Math.min(...data, 0)
-          : (this.calcScaler(data) / count) * i + Math.min(...data);
+          ? (this.calcScaler(labelData) / count) * i + Math.min(...labelData, 0)
+          : (this.calcScaler(labelData) / count) * i + Math.min(...labelData);
         yLabel = `${yAxisLabel}${formatYLabel(
           label.toFixed(decimalPlaces)
         )}${yAxisSuffix}`;
