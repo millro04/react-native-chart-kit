@@ -13,7 +13,11 @@ class BarChart extends AbstractChart {
 
   renderBars = config => {
     const { data, width, height, paddingTop, paddingRight, barRadius } = config;
-    const baseHeight = this.calcBaseHeight(data, height);
+    const labelData = data.slice();
+    if (this.props.yMax) {
+      labelData.push(this.props.yMax);
+    }
+    const baseHeight = this.calcBaseHeight(labelData, height);
     return data.map((x, i) => {
       const barHeight = this.calcHeight(x, data, height);
       const barWidth = 32 * this.getBarPercentage();
