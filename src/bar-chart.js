@@ -84,10 +84,9 @@ class BarChart extends AbstractChart {
             }
             y={((baseHeight - barHeight) / 4) * 3 + paddingTop}
             fill="white"
-            fontSize="16"
-            fontWeight="bold"
+            fontSize="12"
             textAnchor="middle">
-            TESTING
+            {x}
           </Text>
       );
     });
