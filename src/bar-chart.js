@@ -78,14 +78,13 @@ class BarChart extends AbstractChart {
       return (
         <Text
             x={
-              paddingRight +
               (i * (width - paddingRight)) / data.length +
               barWidth / 2
             }
             y={((baseHeight - barHeight) / 4) * 3 + paddingTop}
             fill="white"
             fontSize="12"
-            textAnchor="middle">
+            >
             {x}
           </Text>
       );
