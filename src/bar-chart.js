@@ -23,6 +23,7 @@ class BarChart extends AbstractChart {
       const barWidth = 32 * this.getBarPercentage();
       return (
         <Rect
+          onPress={() => alert('test')}
           key={Math.random()}
           x={
             paddingRight +
