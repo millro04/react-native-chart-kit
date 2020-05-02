@@ -21,7 +21,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
     "react-native-flash-message": "^0.1.10",
     "react-native-scrollable-tab-view": "^0.10.0",
-    "react-native-svg": "> 6.4.1",
+    "react-native-svg": "12.1.0",
     "react-test-renderer": "16.7.0"
   },
   "_main": "./node_modules/expo/AppEntry.js",
@@ -39,7 +39,7 @@
   "peerDependencies": {
     "react": "> 16.7.0",
     "react-native": ">= 0.50.0",
-    "react-native-svg": "> 6.4.1"
+    "react-native-svg": "12.1.0"
   },
   "dependencies": {
     "lodash": "^4.17.13",
