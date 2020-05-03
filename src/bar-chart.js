@@ -12,7 +12,7 @@ class BarChart extends AbstractChart {
   };
 
   renderBars = config => {
-    const { data, width, height, paddingTop, paddingRight, barRadius } = config;
+    const { data, width, height, paddingTop, paddingRight, barRadius, labels } = config;
     const labelData = data.slice();
     if (this.props.yMax) {
       labelData.push(this.props.yMax);
@@ -23,7 +23,7 @@ class BarChart extends AbstractChart {
       const barWidth = 32 * this.getBarPercentage();
       return (
         <Rect
-          onPress={this.props.onBarPress ? () => this.props.onBarPress(x, labelData[i]) : null }
+          onPress={this.props.onBarPress ? () => this.props.onBarPress(x, labels[i]) : null }
           key={Math.random()}
           x={
             paddingRight +
@@ -170,6 +170,7 @@ class BarChart extends AbstractChart {
             {this.renderBars({
               ...config,
               data: data.datasets[0].data,
+              labels: data.labels,
               paddingTop,
               paddingRight
             })}
