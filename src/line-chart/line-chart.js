@@ -314,8 +314,12 @@ class LineChart extends AbstractChart {
       return this.renderBezierShadow(config);
     }
 
-    const { data, width, height, paddingRight, paddingTop, useColorFromDataset } = config;
+    const { data, width, height, paddingRight, paddingTop, useColorFromDataset, yMax } = config;
     const datas = this.getDatas(data);
+    const labelData = datas.slice();
+    if (yMax) {
+      labelData.push(yMax);
+    }
     const baseHeight = this.calcBaseHeight(datas, height);
     return config.data.map((dataset, index) => {
       return (
@@ -328,7 +332,7 @@ class LineChart extends AbstractChart {
                   paddingRight +
                   (i * (width - paddingRight)) / dataset.data.length;
                 const y =
-                  ((baseHeight - this.calcHeight(d, datas, height)) / 4) * 3 +
+                  ((baseHeight - this.calcHeight(d, labelData, height)) / 4) * 3 +
                   paddingTop;
                 return `${x},${y}`;
               })
@@ -356,17 +360,22 @@ class LineChart extends AbstractChart {
       paddingRight,
       paddingTop,
       data,
-      linejoinType
+      linejoinType,
+      yMax
     } = config;
     const output = [];
     const datas = this.getDatas(data);
+    const labelData = datas.slice();
+    if (yMax) {
+      labelData.push(yMax);
+    }
     const baseHeight = this.calcBaseHeight(datas, height);
     data.forEach((dataset, index) => {
       const points = dataset.data.map((d, i) => {
         const x =
           (i * (width - paddingRight)) / dataset.data.length + paddingRight;
         const y =
-          ((baseHeight - this.calcHeight(d, datas, height)) / 4) * 3 +
+          ((baseHeight - this.calcHeight(d, labelData, height)) / 4) * 3 +
           paddingTop;
         return `${x},${y}`;
       });
@@ -386,19 +395,23 @@ class LineChart extends AbstractChart {
   };
 
   getBezierLinePoints = (dataset, config) => {
-    const { width, height, paddingRight, paddingTop, data } = config;
+    const { width, height, paddingRight, paddingTop, data, yMax } = config;
     if (dataset.data.length === 0) {
       return "M0,0";
     }
 
     const datas = this.getDatas(data);
+    const labelData = datas.slice();
+    if (yMax) {
+      labelData.push(yMax);
+    }
     const x = i =>
       Math.floor(
         paddingRight + (i * (width - paddingRight)) / dataset.data.length
       );
     const baseHeight = this.calcBaseHeight(datas, height);
     const y = i => {
-      const yHeight = this.calcHeight(dataset.data[i], datas, height);
+      const yHeight = this.calcHeight(dataset.data[i], labelData, height);
       return Math.floor(((baseHeight - yHeight) / 4) * 3 + paddingTop);
     };
 
