@@ -58,10 +58,11 @@ class LineChart extends AbstractChart {
     } = config;
     const output = [];
     const datas = this.getDatas(data);
-    const labelData = data.slice();
+    const labelData = datas.slice();
     if (yMax) {
       labelData.push(yMax);
     }
+    console.log(labelData);
     const baseHeight = this.calcBaseHeight(datas, height);
     const {
       getDotColor,
