@@ -60,7 +60,7 @@ class LineChart extends AbstractChart {
     if (yMax) {
       labelData.push(yMax);
     }
-    const baseHeight = this.calcBaseHeight(datas, height);
+    const baseHeight = this.calcBaseHeight(labelData, height);
     const {
       getDotColor,
       hidePointsAtIndex = [],
