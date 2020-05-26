@@ -59,8 +59,8 @@ class LineChart extends AbstractChart {
     const output = [];
     const datas = this.getDatas(data);
     const labelData = data.slice();
-    if (this.props.yMax) {
-      labelData.push(this.props.yMax);
+    if (yMax) {
+      labelData.push(yMax);
     }
     const baseHeight = this.calcBaseHeight(datas, height);
     const {
