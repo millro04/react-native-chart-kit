@@ -492,6 +492,7 @@ class LineChart extends AbstractChart {
       formatXLabel = xLabel => xLabel,
       segments,
       transparent = false,
+      yMax,
       chartConfig = {},
     } = this.props;
     const { scrollableDotHorizontalOffset } = this.state;
@@ -509,7 +510,8 @@ class LineChart extends AbstractChart {
       width,
       height,
       verticalLabelRotation,
-      horizontalLabelRotation
+      horizontalLabelRotation,
+      yMax
     };
 
     const datas = this.getDatas(data.datasets);
