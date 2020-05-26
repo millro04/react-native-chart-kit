@@ -154,10 +154,15 @@ class LineChart extends AbstractChart {
       width,
       height,
       paddingRight,
-      paddingTop
+      paddingTop,
+      yMax
     } = config;
     const datas = this.getDatas(data);
-    const baseHeight = this.calcBaseHeight(datas, height);
+    const labelData = datas.slice();
+    if (yMax) {
+      labelData.push(yMax);
+    }
+    const baseHeight = this.calcBaseHeight(labelData, height);
     return config.data.map((dataset, index) => {
       return ( <
         Polygon key = {
@@ -199,11 +204,16 @@ class LineChart extends AbstractChart {
       height,
       paddingRight,
       paddingTop,
-      data
+      data,
+      yMax
     } = config;
     const output = [];
     const datas = this.getDatas(data);
-    const baseHeight = this.calcBaseHeight(datas, height);
+    const labelData = datas.slice();
+    if (yMax) {
+      labelData.push(yMax);
+    }
+    const baseHeight = this.calcBaseHeight(labelData, height);
     data.forEach((dataset, index) => {
       const points = dataset.data.map((d, i) => {
         const x =
@@ -241,18 +251,23 @@ class LineChart extends AbstractChart {
       height,
       paddingRight,
       paddingTop,
-      data
+      data,
+      yMax
     } = config;
     if (dataset.data.length === 0) {
       return "M0,0";
     }
 
     const datas = this.getDatas(data);
+    const labelData = datas.slice();
+    if (yMax) {
+      labelData.push(yMax);
+    }
     const x = i =>
       Math.floor(
         paddingRight + (i * (width - paddingRight)) / dataset.data.length
       );
-    const baseHeight = this.calcBaseHeight(datas, height);
+    const baseHeight = this.calcBaseHeight(labelData, height);
     const y = i => {
       const yHeight = this.calcHeight(dataset.data[i], datas, height);
       return Math.floor(((baseHeight - yHeight) / 4) * 3 + paddingTop);
